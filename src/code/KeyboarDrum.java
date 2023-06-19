@@ -9,7 +9,7 @@ public class KeyboarDrum extends JFrame
      {
           setTitle("KeyboarDrum");
           setDefaultCloseOperation(EXIT_ON_CLOSE);
-          setSize(600, 600);
+          setSize(700, 600);
           setResizable(false);
           setLocationRelativeTo(null);
           setLayout(new BorderLayout());

@@ -72,7 +72,9 @@ public class DrumHit implements KeyListener, ActionListener
      @Override
      public void actionPerformed(ActionEvent e)
      {
-          System.out.println(e.getSource() + " button clicked");
+          JButton clickedButton = (JButton) e.getSource();
+          String part = clickedButton.getText();
+          System.out.println(part+ " button clicked");
 
           try
           {
@@ -81,16 +83,15 @@ public class DrumHit implements KeyListener, ActionListener
                Clip clip = null;
                File soundfile = null;
 
-               int key = 1;
-               if(key == '1') soundfile = new File("src/sound/Acoustic_Drum/ac_crash.wav");
-               else if(key == '2') soundfile = new File("src/sound/Acoustic_Drum/ac_hihat_close.wav");
-               else if(key == '3') soundfile = new File("src/sound/Acoustic_Drum/ac_hihat_open.wav");
-               else if(key == '4') soundfile = new File("src/sound/Acoustic_Drum/ac_snare.wav");
-               else if(key == '5') soundfile = new File("src/sound/Acoustic_Drum/ac_tom1.wav");
-               else if(key == '6') soundfile = new File("src/sound/Acoustic_Drum/ac_kick.wav");
-               else if(key == '7') soundfile = new File("src/sound/Acoustic_Drum/ac_tom2.wav");
-               else if(key == '8') soundfile = new File("src/sound/Acoustic_Drum/ac_tom3.wav");
-               else if(key == '9') soundfile = new File("src/sound/Acoustic_Drum/ac_ride.wav");
+               if(part.equals("Crash")) soundfile = new File("src/sound/Acoustic_Drum/ac_crash.wav");
+               else if(part.equals("<html><body><center>Hihat<br>(Open)</center></body></html>")) soundfile = new File("src/sound/Acoustic_Drum/ac_hihat_close.wav");
+               else if(part.equals("<html><body><center>Hihat<br>(Close)</center></body></html>")) soundfile = new File("src/sound/Acoustic_Drum/ac_hihat_open.wav");
+               else if(part.equals("Snare")) soundfile = new File("src/sound/Acoustic_Drum/ac_snare.wav");
+               else if(part.equals("<html><body><center>High<br>Tom</center></body></html>")) soundfile = new File("src/sound/Acoustic_Drum/ac_tom1.wav");
+               else if(part.equals("Kick")) soundfile = new File("src/sound/Acoustic_Drum/ac_kick.wav");
+               else if(part.equals("<html><body><center>Low<br>Tom</center></body></html>")) soundfile = new File("src/sound/Acoustic_Drum/ac_tom2.wav");
+               else if(part.equals("<html><body><center>Floor<br>Tom</center></body></html>")) soundfile = new File("src/sound/Acoustic_Drum/ac_tom3.wav");
+               else if(part.equals("Ride")) soundfile = new File("src/sound/Acoustic_Drum/ac_ride.wav");
                else right_input = false;
 
                if(right_input)
