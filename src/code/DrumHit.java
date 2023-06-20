@@ -7,8 +7,6 @@ import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
 
-import static java.awt.event.KeyEvent.*;
-
 public class DrumHit implements KeyListener, ActionListener
 {
      @Override

@@ -1,5 +1,3 @@
-import java.awt.*;
-
 public class DemoKeyboarDrum
 {
      public static void main(String[] args)
