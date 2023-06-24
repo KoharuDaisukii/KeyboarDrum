@@ -22,6 +22,18 @@ public class AcousticDrum extends JFrame
           drumPanel.setBounds(-45, 0, 745, 600);
           add(drumPanel);
 
-
+          CustomButton backButton = new CustomButton("back", "png");
+          backButton.setBounds(55,15,60,60);
+          backButton.addActionListener(new ActionListener() {
+               @Override
+               public void actionPerformed(ActionEvent e)
+               {
+                    dispose();
+                    KeyboarDrum restart = new KeyboarDrum();
+                    restart.setVisible(true);
+                    System.out.println(backButton);
+               }
+          });
+          drumPanel.add(backButton);
      }
 }

@@ -1,10 +1,7 @@
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -16,6 +13,17 @@ public class DrumPanel extends JPanel
      String[] ClickOrKeyboardStr = {"키보드로 연주하기", "마우스로 연주하기"};
      public JList ClickOrKeyboardList = new JList(ClickOrKeyboardStr);
 
+     Integer crashKey = (int) 'y';
+     int hihatClosedKey = 'r';
+     int hihatOpenKey = 'e';
+     int snareKey = 's';
+     int highTomKey = 'g';
+     int kickKey = 'x';
+     int lowTomKey = 'h';
+     int floorTomKey = 'j';
+     int rideKey = 'u';
+
+
      public DrumPanel()
      {
           JLabel imgLabel = new JLabel();
@@ -24,6 +32,8 @@ public class DrumPanel extends JPanel
           setBackground(Color.WHITE);
 
           DrumHit test = new DrumHit();
+          addKeyListener(test);
+
           JButton[] drumKit = new JButton[COMPONENT_COUNT];
           int[] x = {173, 105, 105, 200, 241, 275, 328, 385, 435};
           int[] y = {40, 190, 115, 258, 127, 300, 127, 255, 100};
@@ -47,12 +57,12 @@ public class DrumPanel extends JPanel
           ClickOrKeyboardList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // 단일 선택
           ClickOrKeyboardList.setSelectedIndex(0);
           ClickOrKeyboardList.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-          ClickOrKeyboardList.setBounds(575, 190, 107, 36);
+          ClickOrKeyboardList.setBounds(577, 190, 107, 36);
           add(ClickOrKeyboardList);
 
           JButton setButton = new JButton("설정");
 
-          setButton.setBounds(575, 270, 107, 36);
+          setButton.setBounds(577, 270, 107, 36);
           setButton.addActionListener(new ActionListener()
           {
                @Override
@@ -68,10 +78,67 @@ public class DrumPanel extends JPanel
           });
           add(setButton);
 
+          JButton keysetButton = new JButton("trasd");
+
+          keysetButton.setBounds(300, 500, 107, 36);
+          keysetButton.addActionListener(new ActionListener()
+          {
+               @Override
+               public void actionPerformed(ActionEvent e)
+               {
+                    KeySetting temp = new KeySetting("Crash", crashKey.toString());
+                    temp.setVisible(true);
+                    keysetButton.setEnabled(false);
+                    temp.addWindowListener(new WindowListener()
+                    {
+                         @Override
+                         public void windowOpened(WindowEvent e)
+                         {
+
+                         }
+
+                         @Override
+                         public void windowClosing(WindowEvent e)
+                         {
+
+                         }
+
+                         @Override
+                         public void windowClosed(WindowEvent e)
+                         {
+                              keysetButton.setEnabled(true);
+                         }
+
+                         @Override
+                         public void windowIconified(WindowEvent e)
+                         {
+
+                         }
+
+                         @Override
+                         public void windowDeiconified(WindowEvent e)
+                         {
+
+                         }
+
+                         @Override
+                         public void windowActivated(WindowEvent e)
+                         {
+
+                         }
+
+                         @Override
+                         public void windowDeactivated(WindowEvent e)
+                         {
+
+                         }
+                    });
+               }
+          });
+          add(keysetButton);
+
           requestFocus();
           setFocusable(true);
-
-          addKeyListener(test);
      }
 
      @Override
@@ -96,15 +163,15 @@ public class DrumPanel extends JPanel
                     File soundfile = null;
 
                     int key = e.getKeyChar();
-                    if(key == '1') soundfile = new File("src/sound/Acoustic_Drum/ac_crash.wav");
-                    else if(key == '2') soundfile = new File("src/sound/Acoustic_Drum/ac_hihat_close.wav");
-                    else if(key == '3') soundfile = new File("src/sound/Acoustic_Drum/ac_hihat_open.wav");
-                    else if(key == '4') soundfile = new File("src/sound/Acoustic_Drum/ac_snare.wav");
-                    else if(key == '5') soundfile = new File("src/sound/Acoustic_Drum/ac_tom1.wav");
-                    else if(key == '6') soundfile = new File("src/sound/Acoustic_Drum/ac_kick.wav");
-                    else if(key == '7') soundfile = new File("src/sound/Acoustic_Drum/ac_tom2.wav");
-                    else if(key == '8') soundfile = new File("src/sound/Acoustic_Drum/ac_tom3.wav");
-                    else if(key == '9') soundfile = new File("src/sound/Acoustic_Drum/ac_ride.wav");
+                    if(key == crashKey) soundfile = new File("src/sound/Acoustic_Drum/ac_crash.wav");
+                    else if(key == hihatClosedKey) soundfile = new File("src/sound/Acoustic_Drum/ac_hihat_close.wav");
+                    else if(key == hihatOpenKey) soundfile = new File("src/sound/Acoustic_Drum/ac_hihat_open.wav");
+                    else if(key == snareKey) soundfile = new File("src/sound/Acoustic_Drum/ac_snare.wav");
+                    else if(key == highTomKey) soundfile = new File("src/sound/Acoustic_Drum/ac_tom1.wav");
+                    else if(key == kickKey) soundfile = new File("src/sound/Acoustic_Drum/ac_kick.wav");
+                    else if(key == lowTomKey) soundfile = new File("src/sound/Acoustic_Drum/ac_tom2.wav");
+                    else if(key == floorTomKey) soundfile = new File("src/sound/Acoustic_Drum/ac_tom3.wav");
+                    else if(key == rideKey) soundfile = new File("src/sound/Acoustic_Drum/ac_ride.wav");
                     else right_input = false;
 
                     if(right_input)
