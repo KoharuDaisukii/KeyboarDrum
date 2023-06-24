@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 public class KeyboarDrum extends JFrame
 {
      private static final int BUTTON_COUNT = 2;
-     private static final String IMAGEDIR = "src/image/";
-     private static final String EXT = ".png";
+     public static final String IMAGEDIR = "src/image/";
+     private static final String EXT = "png";
      private static final String[] buttonName = {"start", "exit"};
 
      public KeyboarDrum()
@@ -31,15 +31,10 @@ public class KeyboarDrum extends JFrame
 
      public void InitialScreenPanel()
      {
-          JButton[] initialButton = new JButton[BUTTON_COUNT];
+          CustomButton[] initialButton = new CustomButton[BUTTON_COUNT];
           for(int i = 0; i < BUTTON_COUNT; i++)
           {
-               initialButton[i] = new JButton(new ImageIcon(IMAGEDIR + buttonName[i] + EXT));
-               initialButton[i].setBorderPainted(false);
-               initialButton[i].setContentAreaFilled(false);
-               initialButton[i].setFocusPainted(false);
-               initialButton[i].setRolloverIcon(new ImageIcon(IMAGEDIR + buttonName[i] + "Rollover" + EXT));
-               initialButton[i].setPressedIcon(new ImageIcon(IMAGEDIR + buttonName[i] + "Pressed" + EXT));
+               initialButton[i] = new CustomButton(buttonName[i], EXT);
                initialButton[i].setBounds(266, 250 + i * 90, 167, 66);
 
                add(initialButton[i]);
@@ -53,6 +48,7 @@ public class KeyboarDrum extends JFrame
                     dispose();
                     AcousticDrum test = new AcousticDrum();
                     test.setVisible(true);
+                    System.out.println(initialButton[0]);
                }
           });
 
@@ -61,6 +57,7 @@ public class KeyboarDrum extends JFrame
                @Override
                public void actionPerformed(ActionEvent e)
                {
+                    System.out.println(initialButton[1]);
                     System.exit(1);
                }
           });
