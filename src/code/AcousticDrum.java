@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,14 +14,14 @@ public class AcousticDrum extends JFrame
           setSize(700, 600);
           setResizable(false);
           setLocationRelativeTo(null);
-          // getContentPane().setBackground(Color.WHITE);
+          getContentPane().setBackground(Color.WHITE);
           setLayout(null);
 
-          drumPanel.setBounds(-45, 0, 745, 600);
+          drumPanel.setBounds(3, 15, 745, 600);
           add(drumPanel);
 
           CustomButton backButton = new CustomButton("back", "png");
-          backButton.setBounds(55,15,60,60);
+          backButton.setBounds(7,0,60,60);
           backButton.addActionListener(new ActionListener() {
                @Override
                public void actionPerformed(ActionEvent e)
